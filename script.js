@@ -8,16 +8,31 @@ function render (html) {
 -------------------------------- */
 let clickCount = 0
 
+document.getElementById('btnClick').addEventListener('click', () => {
+  clickCount++
+  render(`Button clicked <strong>${clickCount}</strong> time${clickCount === 1 ? '' : 's'}`);
+})
 
 /* --------------------------------------
    Demo 2: Double-click (toggle highlight)
 --------------------------------------- */
-
+ let dblCard = document.getElementById ('dblCard')
+dblCard.addEventListener('dblclick', () => {
+    dblCard.classList.toggle('activated')
+    const state = dblCard.classList.contains('activated') ? 'ON' : 'OFF'
+    render(`Activated: ${state}`)
+});
 
 /* --------------------------------
    Demo 3: Keypress (show key/code)
 --------------------------------- */
-
+const kbKey = document.getElementById('kbKey')
+const kbCode = document.getElementById('kbCode')
+document.addEventListener('keydown', (event) => {
+  kbKey.textContent = event.key === ' ' ? 'Space' : event.key
+  kbCode.textContent = event.code
+  render(`You pressed <strong>${event.key}</strong> (code: <strong>${event.code}</strong>)`)
+})
 
 /* ----------------------------------------
    Demo 4: Show Time (12-hour format + day)
