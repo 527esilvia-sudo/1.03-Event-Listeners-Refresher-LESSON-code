@@ -70,3 +70,17 @@ document.getElementById('btnClear').addEventListener('click', () => {
    - On focus: add a border/shadow class to the input
    - On blur: remove those classes and make sure #out shows the right message
 ================================================== */
+let count = 0;
+
+let card = document.getElementById("dblCard");
+
+card.addEventListener("mouseenter", function() {
+  card.classList.add("activated");
+  count++;
+  render(`Card hovered ${count} times!`);
+});
+
+card.addEventListener("mouseleave", function() {
+  card.classList.remove("activated");
+  render("Mouse left the card.");
+});
